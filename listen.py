@@ -5,7 +5,8 @@ from scapy.all import sniff, ARP
 
 
 def arp_received(packet):
-    if packet[ARP].op == 1 and packet[ARP].psrc == '0.0.0.0':
+    if packet[ARP].op == 1 and packet[ARP].psrc == '0.0.0.0' and packet[ARP].hwsrc == '08:11:96:07:b4:ac':
+        print("Button pressed!")
         print(packet[ARP].hwsrc)
 
 
