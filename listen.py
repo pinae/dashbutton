@@ -5,11 +5,12 @@ from scapy.all import sniff, ARP
 
 
 def arp_received(packet):
-    if packet[ARP].op == 1 and packet[ARP].psrc == '0.0.0.0' and packet[ARP].hwsrc == '50:f5:da:6f:98:6c':
+    if packet[ARP].hwsrc == '50:f5:da:6f:98:6c':
         print("Button pressed!")
+    else:
         print(packet[ARP].hwsrc)
 
 
 if __name__ == "__main__":
     print("Listening for ARP packets...")
-    print(sniff(prn=arp_received, filter="arp", store=0))
+    sniff(prn=arp_received, iface="wlan0", filter="arp")
