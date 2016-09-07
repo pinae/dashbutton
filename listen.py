@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from scapy.all import sniff, ARP
 from datetime import datetime, timedelta
+import requests
 last_press = datetime.now() - timedelta(seconds=10)
 
 
@@ -13,6 +14,7 @@ def arp_received(packet):
             if last_press + timedelta(seconds=5) <= now:
                 print("Button pressed!")
                 last_press = now
+                requests.get("https://maker.ifttt.com/trigger/dash_button_pressed/with/key/bVTfJ-_fhDejXSGgGnLdfU")
         elif packet[ARP].hwsrc != 'b8:27:eb:17:d5:22':  # If it is not the MAC of the Raspi it could be another button
             print("Unknown Device connecting: " + packet[ARP].hwsrc)
 
