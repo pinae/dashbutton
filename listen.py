@@ -19,4 +19,4 @@ def arp_received(packet):
 
 if __name__ == "__main__":
     print("Listening for ARP packets...")
-    sniff(prn=arp_received, iface="wlan0", filter="arp")
+    sniff(prn=arp_received, iface="wlan0", filter="arp", store=0, count=0)
