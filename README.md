@@ -10,14 +10,14 @@ Activate your dash button with the Amazon smartphone app. You do not
 need to select a product to order. The script will register if the 
 button is pressed even if no product was selected.
 
-The script uses scapy to sniff the ARP-packets the button sends when 
-connecting to your wifi. Because of that it only works with Python 2.7.
-If you want to trigger the webhook you also need requests, the mail
-part uses smtplib.
+The script uses `scapy` to sniff the ARP-packets the button sends when 
+connecting to your wifi. Scapy is available for Python 2.7 and Python 3.x.
+If you want to trigger the webhook you also need `requests`, the mail
+part uses `smtplib`.
 
 The script probably needs root-privileges:
 ```shell
-sudo python2 listen.py
+sudo python listen.py
 ```
 
 Run the script without any modification. It will list all unrecognized 
